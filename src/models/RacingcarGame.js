@@ -29,6 +29,22 @@ class RacingcarGame {
     return this.#cars.map((car) => car.getCarPosition());
   }
 
+  getWinner() {
+    let longest;
+    const winner = [];
+    this.#ascendingCarsPosition().every(({ name, position }, order) => {
+      if (order === 0) longest = position;
+      if (position === longest) return winner.push(name);
+      return false;
+    });
+
+    return winner;
+  }
+
+  #ascendingCarsPosition() {
+    return this.getCarsPosition().sort((a, b) => b.position - a.position);
+  }
+
   static validationTryCount(tryCount) {
     const numberRegExp = /^[0-9]+$/;
     if (!numberRegExp.test(tryCount)) return false;
