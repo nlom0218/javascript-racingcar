@@ -44,6 +44,13 @@ class GameManager {
 
   movingCarForward() {
     this.#racingcarGame.movingCarForward();
+    this.resutlMovingCarForward();
+  }
+
+  resultMovingCarForward() {
+    if (this.#racingcarGame.isEnd())
+      return console.log('최종 우승자 선정 후 종료하기');
+    this.movingCarForward();
   }
 }
 

@@ -21,6 +21,10 @@ class RacingcarGame {
     });
   }
 
+  isEnd() {
+    return this.#tryCount === 0;
+  }
+
   static validationTryCount(tryCount) {
     const numberRegExp = /^[0-9]+$/;
     if (!numberRegExp.test(tryCount)) return false;
