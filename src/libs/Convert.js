@@ -1,6 +1,8 @@
+const { SEPARATOR } = require('./Constant');
+
 const Convert = {
   fromStringToArray(string) {
-    return string.split(',');
+    return string.split(SEPARATOR);
   },
 };
 

@@ -1,3 +1,4 @@
+const { CONDITIONS_TO_FORWARD } = require('../libs/Constant');
 const errorHandler = require('../libs/errorHandler');
 const { generate } = require('../libs/MovingRandomNumber');
 const { CarNameValidator } = require('../libs/Validator');
@@ -16,7 +17,7 @@ class Car {
 
   movingForward() {
     const randomNumber = generate();
-    if (randomNumber > 3) this.#position += 1;
+    if (randomNumber > CONDITIONS_TO_FORWARD) this.#position += 1;
   }
 
   getCarPosition() {
