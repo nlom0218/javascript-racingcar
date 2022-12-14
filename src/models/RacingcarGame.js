@@ -1,5 +1,14 @@
+const Car = require('./Car');
+
 class RacingcarGame {
+  #cars = [];
   #tryCount;
+
+  createCars(carsName) {
+    carsName.forEach((carName) => {
+      this.#cars.push(new Car(carName));
+    });
+  }
 
   setTryCount(tryCount) {
     this.#tryCount = Number(tryCount);

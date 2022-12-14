@@ -1,10 +1,10 @@
 const Car = require('../models/Car');
 const RacingcarGame = require('../models/RacingcarGame');
+const Convert = require('../libs/Convert');
 const { InputView } = require('../views/IOView');
 
 class GameManager {
-  #RacingcarGame = new RacingcarGame();
-  #cars = [];
+  #racingcarGame = new RacingcarGame();
 
   start() {
     this.requestCarName();
@@ -20,11 +20,14 @@ class GameManager {
   }
 
   createCars(carNames) {
-    carNames.split(',').forEach((carName) => {
+    carNames = Convert.fromStringToArray(carNames);
+
+    carNames.forEach((carName) => {
       const isValid = Car.validtionCarName(carName);
       if (!isValid) return this.requestCarName();
-      this.#cars.push(new Car(carName));
     });
+
+    this.#racingcarGame.createCars(carNames);
   }
 
   requestTryCount() {
