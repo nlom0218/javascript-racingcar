@@ -9,6 +9,6 @@ class App {
 }
 
 const app = new App();
-app.play;
+app.play();
 
 module.exports = App;
