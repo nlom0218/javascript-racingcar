@@ -22,12 +22,15 @@ class GameManager {
   createCars(carNames) {
     carNames = Convert.fromStringToArray(carNames);
 
-    carNames.forEach((carName) => {
+    if (this.checkCarsName(carNames)) this.#racingcarGame.createCars(carNames);
+  }
+
+  checkCarsName(carNames) {
+    return carNames.every((carName) => {
       const isValid = Car.validtionCarName(carName);
       if (!isValid) return this.requestCarName();
+      return isValid;
     });
-
-    this.#racingcarGame.createCars(carNames);
   }
 
   requestTryCount() {

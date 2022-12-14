@@ -1,3 +1,5 @@
+const errorHandler = require('../libs/errorHandler');
+const { TryCountValidator } = require('../libs/Validator');
 const Car = require('./Car');
 
 class RacingcarGame {
@@ -46,8 +48,12 @@ class RacingcarGame {
   }
 
   static validationTryCount(tryCount) {
-    const numberRegExp = /^[0-9]+$/;
-    if (!numberRegExp.test(tryCount)) return false;
+    try {
+      TryCountValidator.validation(tryCount);
+    } catch (error) {
+      errorHandler(error);
+      return false;
+    }
     return true;
   }
 }

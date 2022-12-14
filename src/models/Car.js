@@ -1,4 +1,6 @@
+const errorHandler = require('../libs/errorHandler');
 const { generate } = require('../libs/MovingRandomNumber');
+const { CarNameValidator } = require('../libs/Validator');
 
 class Car {
   #name;
@@ -22,7 +24,12 @@ class Car {
   }
 
   static validtionCarName(carName) {
-    if (carName.length > 5) return false;
+    try {
+      CarNameValidator.validation(carName);
+    } catch (error) {
+      errorHandler(error);
+      return false;
+    }
     return true;
   }
 }
