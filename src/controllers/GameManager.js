@@ -1,6 +1,9 @@
+const Car = require('../models/Car');
 const { InputView } = require('../views/IOView');
 
 class GameManager {
+  #cars = [];
+
   start() {
     this.requestCarName();
   }
@@ -10,7 +13,15 @@ class GameManager {
   }
 
   handleCarName(carNames) {
-    console.log(`생성된 차들은 ${carNames}입니다.`);
+    this.createCars(carNames);
+  }
+
+  createCars(carNames) {
+    carNames.split(',').forEach((carName) => {
+      const isValid = Car.validtionCar(carName);
+      if (!isValid) return this.requestCarName();
+      this.#cars.push(new Car(carName));
+    });
   }
 }
 
