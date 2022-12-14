@@ -37,6 +37,13 @@ class GameManager {
   handleTryCount(tryCount) {
     const isValid = RacingcarGame.validationTryCount(tryCount);
     if (!isValid) return this.requestTryCount();
+
+    this.#racingcarGame.setTryCount(tryCount);
+    this.movingCarForward();
+  }
+
+  movingCarForward() {
+    this.#racingcarGame.movingCarForward();
   }
 }
 

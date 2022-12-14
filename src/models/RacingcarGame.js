@@ -14,6 +14,13 @@ class RacingcarGame {
     this.#tryCount = Number(tryCount);
   }
 
+  movingCarForward() {
+    this.#tryCount -= 1;
+    this.#cars.forEach((car) => {
+      car.movingForward();
+    });
+  }
+
   static validationTryCount(tryCount) {
     const numberRegExp = /^[0-9]+$/;
     if (!numberRegExp.test(tryCount)) return false;
