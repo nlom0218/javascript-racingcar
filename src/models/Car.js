@@ -10,7 +10,7 @@ class Car {
     this.#name = carName;
   }
 
-  static validtionCar(carName) {
+  static validtionCarName(carName) {
     if (carName.length > 5) return false;
     return true;
   }
