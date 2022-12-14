@@ -25,6 +25,10 @@ class RacingcarGame {
     return this.#tryCount === 0;
   }
 
+  getCarsPosition() {
+    return this.#cars.map((car) => car.getCarPosition());
+  }
+
   static validationTryCount(tryCount) {
     const numberRegExp = /^[0-9]+$/;
     if (!numberRegExp.test(tryCount)) return false;

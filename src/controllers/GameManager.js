@@ -1,7 +1,7 @@
 const Car = require('../models/Car');
 const RacingcarGame = require('../models/RacingcarGame');
 const Convert = require('../libs/Convert');
-const { InputView } = require('../views/IOView');
+const { InputView, OutputView } = require('../views/IOView');
 
 class GameManager {
   #racingcarGame = new RacingcarGame();
@@ -39,15 +39,17 @@ class GameManager {
     if (!isValid) return this.requestTryCount();
 
     this.#racingcarGame.setTryCount(tryCount);
+    OutputView.printResultMessage();
     this.movingCarForward();
   }
 
   movingCarForward() {
     this.#racingcarGame.movingCarForward();
-    this.resutlMovingCarForward();
+    this.resultMovingCarForward();
   }
 
   resultMovingCarForward() {
+    OutputView.printResult(this.#racingcarGame.getCarsPosition());
     if (this.#racingcarGame.isEnd())
       return console.log('최종 우승자 선정 후 종료하기');
     this.movingCarForward();

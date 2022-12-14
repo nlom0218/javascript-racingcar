@@ -17,6 +17,10 @@ class Car {
     if (randomNumber > 3) this.#position += 1;
   }
 
+  getCarPosition() {
+    return { name: this.#name, position: this.#position };
+  }
+
   static validtionCarName(carName) {
     if (carName.length > 5) return false;
     return true;
